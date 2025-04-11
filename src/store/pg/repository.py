@@ -1,10 +1,10 @@
 from uuid import UUID
 
-from sqlalchemy.sql import select, delete
+from sqlalchemy.sql import delete, select
 
 from model.entities import User
-from store.pg.scheme import UserSchema
 from store.pg.core import async_session_maker
+from store.pg.scheme import UserSchema
 
 
 class UserRepo:

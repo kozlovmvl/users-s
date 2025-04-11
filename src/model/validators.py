@@ -1,6 +1,6 @@
 from string import ascii_letters, digits
 
-from .exceptions import UsernameInvalidLength, UsernameInvalidSymbol, EmailInvalidStruct
+from .exceptions import EmailInvalidStruct, UsernameInvalidLength, UsernameInvalidSymbol
 
 
 def validate_username_length(value: str) -> str:

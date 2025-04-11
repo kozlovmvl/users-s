@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 from model.entities import User
 from store.pg.core import Base
 from store.pg.scheme import UserSchema
-from tests.store.pg.settings import settings
+from tests.settings import settings
 
 
 @pytest_asyncio.fixture()

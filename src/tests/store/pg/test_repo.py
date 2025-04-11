@@ -1,5 +1,5 @@
 import pytest
-from sqlalchemy.sql import select, exists
+from sqlalchemy.sql import exists, select
 
 from model.entities import User
 from store.pg.repository import UserRepo

@@ -12,6 +12,7 @@ pydantic-settings = "^2.8.1"
 asyncpg = "^0.30.0"
 sqlalchemy = "^2.0.40"
 alembic = "^1.15.2"
+litestar = "^2.15.2"
 
 
 [tool.poetry.group.test.dependencies]
@@ -25,6 +26,9 @@ ruff = "^0.11.2"
 
 [tool.pytest.ini_options]
 asyncio_default_fixture_loop_scope = "function"
+
+[tool.ruff]
+extend-select = ["I"]
 
 [build-system]
 requires = ["poetry-core"]
