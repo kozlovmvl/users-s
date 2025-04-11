@@ -1,7 +1,7 @@
 from litestar import Litestar
 
-from settings import settings
 from api.web.handlers import UserController
+from settings import settings
 
 app = Litestar(
     debug=settings.DEBUG,

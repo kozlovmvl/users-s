@@ -1,5 +1,8 @@
 from typing import Protocol, runtime_checkable
 from uuid import UUID
+
+from litestar.exceptions import ValidationException
+
 from api.web.scheme import (
     UserCreateInputSchema,
     UserCreateOutputSchema,
@@ -9,13 +12,11 @@ from api.web.scheme import (
 )
 from model.entities import User
 from model.exceptions import (
+    EmailInvalidStruct,
     UsernameInvalidLength,
     UsernameInvalidSymbol,
-    EmailInvalidStruct,
 )
 from store.protocols import UserRepoProtocol
-
-from litestar.exceptions import ValidationException
 
 
 @runtime_checkable

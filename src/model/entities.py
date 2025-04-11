@@ -1,12 +1,12 @@
 from typing import Annotated
 from uuid import UUID, uuid4
 
-from pydantic import BaseModel, Field, AfterValidator
+from pydantic import AfterValidator, BaseModel, Field
 
 from .validators import (
+    validate_email_struct,
     validate_username_length,
     validate_username_symbols,
-    validate_email_struct,
 )
 
 Username = Annotated[

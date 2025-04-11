@@ -1,5 +1,6 @@
 import pytest
-from api.web.usecases import UserUsecase, UserUsecaseProtocol
+from litestar.exceptions import ValidationException
+
 from api.web.scheme import (
     UserCreateInputSchema,
     UserCreateOutputSchema,
@@ -7,8 +8,7 @@ from api.web.scheme import (
     UserUpdateInputSchema,
     UserUpdateOutputSchema,
 )
-
-from litestar.exceptions import ValidationException
+from api.web.usecases import UserUsecase, UserUsecaseProtocol
 
 
 @pytest.mark.asyncio

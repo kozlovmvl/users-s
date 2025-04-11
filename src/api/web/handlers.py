@@ -1,15 +1,16 @@
 from uuid import UUID
-from litestar import Controller, get, post, patch, delete
+
+from litestar import Controller, delete, get, patch, post
 from litestar.di import Provide
 
 from api.web.scheme import (
-    UserGetOutputSchema,
     UserCreateInputSchema,
     UserCreateOutputSchema,
+    UserGetOutputSchema,
     UserUpdateInputSchema,
     UserUpdateOutputSchema,
 )
-from api.web.usecases import UserUsecaseProtocol, UserUsecase
+from api.web.usecases import UserUsecase, UserUsecaseProtocol
 from store.pg.repository import UserRepo
 
 

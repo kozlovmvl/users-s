@@ -1,8 +1,9 @@
 from datetime import datetime
-from uuid import UUID
 from typing import Self
+from uuid import UUID
 
-from sqlalchemy import UUID as SQLA_UUID, String, DateTime, func
+from sqlalchemy import UUID as SQLA_UUID
+from sqlalchemy import DateTime, String, func
 from sqlalchemy.orm import Mapped, mapped_column
 
 from model.entities import User

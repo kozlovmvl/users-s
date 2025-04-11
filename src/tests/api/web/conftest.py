@@ -1,6 +1,8 @@
 from uuid import UUID
-from model.entities import User
+
 import pytest_asyncio
+
+from model.entities import User
 
 
 @pytest_asyncio.fixture()
