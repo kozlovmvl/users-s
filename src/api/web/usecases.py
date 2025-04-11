@@ -8,7 +8,14 @@ from api.web.scheme import (
     UserUpdateOutputSchema,
 )
 from model.entities import User
+from model.exceptions import (
+    UsernameInvalidLength,
+    UsernameInvalidSymbol,
+    EmailInvalidStruct,
+)
 from store.protocols import UserRepoProtocol
+
+from litestar.exceptions import ValidationException
 
 
 @runtime_checkable
@@ -35,7 +42,14 @@ class UserUsecase:
         return UserGetOutputSchema.model_validate(user)
 
     async def create_user(self, data: UserCreateInputSchema) -> UserCreateOutputSchema:
-        user = User.model_validate(data)
+        try:
+            user = User.model_validate(data)
+        except (
+            UsernameInvalidLength,
+            UsernameInvalidSymbol,
+            EmailInvalidStruct,
+        ) as err:
+            raise ValidationException from err
         await self.repo.create(user)
         return UserCreateOutputSchema.model_validate(user)
 
@@ -44,7 +58,14 @@ class UserUsecase:
     ) -> UserUpdateOutputSchema:
         user = await self.repo.get_by_id(user_id=user_id)
         for key, value in data.model_dump(exclude_unset=True).items():
-            setattr(user, key, value)
+            try:
+                setattr(user, key, value)
+            except (
+                UsernameInvalidLength,
+                UsernameInvalidSymbol,
+                EmailInvalidStruct,
+            ) as err:
+                raise ValidationException from err
         await self.repo.update(user)
         return UserUpdateOutputSchema.model_validate(user)
 

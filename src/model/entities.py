@@ -25,4 +25,4 @@ class User(BaseModel):
     username: Username
     email: Email
 
-    model_config = {"from_attributes": True}
+    model_config = {"from_attributes": True, "validate_assignment": True}
