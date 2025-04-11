@@ -24,3 +24,5 @@ class User(BaseModel):
     id: UUID = Field(default_factory=uuid4)
     username: Username
     email: Email
+
+    model_config = {"from_attributes": True}

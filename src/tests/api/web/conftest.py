@@ -4,15 +4,15 @@ import pytest_asyncio
 
 
 @pytest_asyncio.fixture()
-async def user():
+async def mock_user():
     yield User(username="user1", email="user1@host")
 
 
 @pytest_asyncio.fixture()
-async def mock_repo(user):
+async def mock_repo(mock_user):
     class MockRepo:
         async def get_by_id(self, user_id: UUID, **kwargs) -> User:
-            return user
+            return mock_user
 
         async def create(self, obj: User, **kwargs) -> None:
             return
